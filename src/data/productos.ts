@@ -19,4 +19,13 @@ export const productos: Producto[] = [
     stock: 80,
     descripcion: 'Uso indicado bajo prescripción médica.',
   },
+  {
+    id: 'prod-03',
+    nombre: 'Multivitamínico',
+    categoria: 'Vitaminas',
+    presentacion: 'Frasco con 30 tabletas',
+    precio: 138,
+    stock: 64,
+    descripcion: 'Complemento vitamínico para uso diario.',
+  },
 ];

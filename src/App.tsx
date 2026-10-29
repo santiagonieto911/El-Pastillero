@@ -1,3 +1,5 @@
+import { Catalogo } from './pages/Catalogo';
+
 export default function App() {
-  return <div>Genéricos El Pastillero</div>;
+  return <Catalogo />;
 }
