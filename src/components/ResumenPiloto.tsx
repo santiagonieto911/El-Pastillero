@@ -1,30 +1,54 @@
+import { formatearMoneda } from '../lib/formato';
+
 type ResumenPilotoProps = {
-  total: number;
-  cumplimiento: number;
+  sucursal: string;
+  inversion: number;
+  tope: number;
+  progreso: number;
+  estado: string;
+  sePasa: boolean;
+  gananciaMes: number;
+  gananciaSemanas: number;
+  semanas: number;
+  tasaCambio: number;
 };
 
-export function ResumenPiloto({ total, cumplimiento }: ResumenPilotoProps) {
+export function ResumenPiloto({
+  sucursal,
+  inversion,
+  tope,
+  progreso,
+  estado,
+  sePasa,
+  gananciaMes,
+  gananciaSemanas,
+  semanas,
+  tasaCambio,
+}: ResumenPilotoProps) {
   return (
     <section className="resumen-piloto">
-      <h3>Resumen del piloto</h3>
+      <h2>Resumen de la prueba en {sucursal}</h2>
       <div className="resumen-piloto__meta">
         <span>Inversión total</span>
-        <strong>{total}</strong>
+        <strong>{formatearMoneda(inversion)} de {formatearMoneda(tope)}</strong>
       </div>
-      <div className="progress-bar" aria-label="Progreso del piloto">
-        <span style={{ width: `${Math.min(cumplimiento, 100)}%` }} />
+      <div className={`progress-bar ${sePasa ? 'progress-bar--excedido' : ''}`} aria-label="Avance del tope de inversión">
+        <span style={{ width: `${progreso}%` }} />
       </div>
-      <p className="resumen-piloto__estado">Cumplimiento estimado: {cumplimiento.toFixed(0)}%.</p>
+      <p className="resumen-piloto__estado">{estado}</p>
       <div className="resumen-piloto__grid">
         <div>
-          <span>Clientes</span>
-          <strong>{total}</strong>
+          <span>Ganancia extra al mes</span>
+          <strong>{formatearMoneda(gananciaMes)}</strong>
         </div>
         <div>
-          <span>Meta</span>
-          <strong>{Math.min(Math.round(cumplimiento), 100)}%</strong>
+          <span>Ganancia extra en {semanas} semanas</span>
+          <strong>{formatearMoneda(gananciaSemanas)}</strong>
         </div>
       </div>
+      <p className="resumen-piloto__nota">
+        Supone que {tasaCambio}% de los clientes de la marca cambia al genérico.
+      </p>
     </section>
   );
 }

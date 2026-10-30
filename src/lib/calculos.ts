@@ -8,6 +8,10 @@ export function porcentajeAhorro(producto: Producto): number {
   return Math.round((ahorroPorCaja(producto) / producto.precioMarca) * 100);
 }
 
+export function proporcionPrecioGenerico(producto: Producto): number {
+  return (producto.precioGenerico / producto.precioMarca) * 100;
+}
+
 export function ahorroAnual(producto: Producto): number {
   return ahorroPorCaja(producto) * 12;
 }
@@ -61,6 +65,18 @@ export function gananciaExtraSemanas(
 
 export function cabeEnPresupuesto(productos: Producto[], tope: number): boolean {
   return productos.length > 0 && totalInversion(productos) <= tope;
+}
+
+export function evaluarTope(inversion: number, tope: number): {
+  sePasa: boolean;
+  diferencia: number;
+  progreso: number;
+} {
+  return {
+    sePasa: inversion > tope,
+    diferencia: Math.abs(tope - inversion),
+    progreso: tope > 0 ? Math.min((inversion / tope) * 100, 100) : (inversion > 0 ? 100 : 0),
+  };
 }
 
 export function evaluarPolitica(criterios: Criterio[], presupuestoOk: boolean): {
