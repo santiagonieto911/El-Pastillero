@@ -1,3 +1,19 @@
-export function ChecklistPolitica() {
-  return <ul><li>Política</li></ul>;
+type ChecklistPoliticaProps = {
+  criterios: Array<{ id: string; nombre: string; valor: number }>;
+};
+
+export function ChecklistPolitica({ criterios }: ChecklistPoliticaProps) {
+  return (
+    <section className="checklist-politica">
+      <h3>Checklist de política</h3>
+      <ul>
+        {criterios.map((criterio) => (
+          <li key={criterio.id}>
+            <span>{criterio.nombre}</span>
+            <strong>{criterio.valor}%</strong>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
 }

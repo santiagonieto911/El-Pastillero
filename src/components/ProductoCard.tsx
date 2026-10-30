@@ -8,12 +8,30 @@ type ProductoCardProps = {
 export function ProductoCard({ producto }: ProductoCardProps) {
   return (
     <article className="producto-card">
-      <p className="producto-card__categoria">{producto.categoria}</p>
-      <h2>{producto.nombre}</h2>
-      <p>{producto.presentacion}</p>
+      <div className="producto-card__topline" aria-hidden="true" />
+      <div className="producto-card__header">
+        <div>
+          <p className="producto-card__categoria">{producto.categoria}</p>
+          <h2>{producto.nombre}</h2>
+        </div>
+        <span className="chip chip--receta">{producto.stock} disponibles</span>
+      </div>
+
+      <p className="producto-card__presentacion">{producto.presentacion}</p>
+      <p className="producto-card__uso">{producto.descripcion}</p>
+
+      <div className="precio-bar" aria-label={`Precio de ${producto.nombre}`}>
+        <div className="precio-bar__label">
+          <span>Precio</span>
+          <strong>{formatearMoneda(producto.precio)}</strong>
+        </div>
+      </div>
+
       <div className="producto-card__meta">
-        <strong>{formatearMoneda(producto.precio)}</strong>
-        <span>Stock: {producto.stock}</span>
+        <span className="producto-card__ahorro">Ahorro al cliente</span>
+        <button type="button" className="button button--primary">
+          Ver detalle
+        </button>
       </div>
     </article>
   );

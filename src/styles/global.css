@@ -19,6 +19,33 @@ body {
   padding: 24px 16px 48px;
 }
 
+.hero-block {
+  margin-bottom: 24px;
+  padding: 8px 0 12px;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #c44a0a;
+}
+
+.hero-block h1 {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.1;
+}
+
+.hero-block p:last-child {
+  margin: 0;
+  max-width: 680px;
+  color: #475569;
+  line-height: 1.6;
+}
+
 .topbar {
   background: #163d2f;
   color: #f8fafc;
@@ -84,6 +111,24 @@ body {
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04);
 }
 
+.producto-card {
+  display: grid;
+  gap: 12px;
+}
+
+.producto-card__topline {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #c44a0a 0%, #f4a261 100%);
+}
+
+.producto-card__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: flex-start;
+}
+
 .producto-card__categoria,
 .detalle-panel__categoria {
   margin: 0 0 8px;
@@ -107,6 +152,11 @@ body {
   line-height: 1.5;
 }
 
+.producto-card__presentacion,
+.producto-card__uso {
+  color: #475569;
+}
+
 .producto-card__meta,
 .detalle-panel__precio,
 .apartado-panel__row {
@@ -117,7 +167,38 @@ body {
 }
 
 .producto-card__meta {
-  margin-top: 16px;
+  margin-top: 8px;
+  align-items: center;
+}
+
+.producto-card__ahorro {
+  color: #17794d;
+  font-weight: 700;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  background: #edf3f7;
+  color: #163d2f;
+  padding: 6px 10px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.button {
+  border: 0;
+  border-radius: 999px;
+  padding: 10px 16px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.button--primary {
+  background: #163d2f;
+  color: #f8fafc;
 }
 
 .detalle-panel__precio {
@@ -139,8 +220,126 @@ body {
   border-top: 0;
 }
 
+.page-piloto {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+.page-piloto h2 {
+  margin: 0 0 20px;
+  font-size: 2rem;
+}
+
+.piloto-metricas {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.piloto-metrica {
+  background: #ffffff;
+  border: 1px solid #dfe7e3;
+  border-radius: 16px;
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.piloto-metrica span {
+  color: #475569;
+}
+
+.piloto-metrica strong {
+  font-size: 1.7rem;
+}
+
+.tabla-piloto {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border: 1px solid #dfe7e3;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.tabla-piloto th,
+.tabla-piloto td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tabla-piloto th {
+  background: #ecfdf5;
+}
+
+.resumen-piloto,
+.checklist-politica {
+  background: #ffffff;
+  border: 1px solid #dfe7e3;
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 24px;
+}
+
+.resumen-piloto h3,
+.checklist-politica h3 {
+  margin: 0 0 16px;
+  font-size: 1.1rem;
+}
+
+.resumen-piloto__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 16px;
+}
+
+.resumen-piloto__grid div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.resumen-piloto__grid span {
+  color: #475569;
+}
+
+.resumen-piloto__grid strong {
+  font-size: 1.5rem;
+}
+
+.checklist-politica ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.checklist-politica li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-top: 1px solid #e5e7eb;
+  padding-top: 12px;
+}
+
+.checklist-politica li:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
 @media (max-width: 760px) {
   .catalogo {
+    grid-template-columns: 1fr;
+  }
+
+  .piloto-metricas,
+  .resumen-piloto__grid {
     grid-template-columns: 1fr;
   }
 }

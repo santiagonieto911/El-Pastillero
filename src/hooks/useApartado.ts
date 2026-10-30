@@ -1,6 +1,9 @@
-export function useApartado() {
+import type { Producto } from '../types';
+import { calcularTotal } from '../lib/calculos';
+
+export function useApartado(producto: Producto, cantidad: number) {
   return {
-    cantidad: 0,
-    total: 0,
+    cantidad,
+    total: calcularTotal(producto.precio, cantidad),
   };
 }
