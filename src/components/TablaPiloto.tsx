@@ -6,23 +6,27 @@ type TablaPilotoProps = {
 
 export function TablaPiloto({ sucursales }: TablaPilotoProps) {
   return (
-    <table className="tabla-piloto">
-      <thead>
-        <tr>
-          <th>Sucursal</th>
-          <th>Zona</th>
-          <th>Clientes</th>
-        </tr>
-      </thead>
-      <tbody>
-        {sucursales.map((sucursal) => (
-          <tr key={sucursal.id}>
-            <td>{sucursal.nombre}</td>
-            <td>{sucursal.zona}</td>
-            <td>{sucursal.clientes}</td>
+    <section className="tabla-wrap">
+      <table className="tabla-piloto">
+        <thead>
+          <tr>
+            <th>Sucursal</th>
+            <th>Zona</th>
+            <th>Clientes</th>
+            <th>Estimación</th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {sucursales.map((sucursal) => (
+            <tr key={sucursal.id}>
+              <td>{sucursal.nombre}</td>
+              <td>{sucursal.zona}</td>
+              <td>{sucursal.clientes}</td>
+              <td>Buena demanda</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </section>
   );
 }

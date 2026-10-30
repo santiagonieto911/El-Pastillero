@@ -8,7 +8,10 @@ export function Piloto() {
 
   return (
     <main className="page-piloto">
-      <h2>Piloto</h2>
+      <section className="hero-block">
+        <p className="eyebrow">Prueba piloto</p>
+        <h1>Evaluación de José</h1>
+      </section>
 
       <div className="piloto-metricas">
         <div className="piloto-metrica">

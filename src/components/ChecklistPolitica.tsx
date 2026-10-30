@@ -14,6 +14,7 @@ export function ChecklistPolitica({ criterios }: ChecklistPoliticaProps) {
           </li>
         ))}
       </ul>
+      <div className="checklist-politica__status is-success">Cumple con la política mínima</div>
     </section>
   );
 }
