@@ -1,5 +1,10 @@
-export const criterios = [
-  { id: 'c-01', nombre: 'Cobertura', valor: 75, descripcion: 'Porcentaje estimado de cobertura de venta.' },
-  { id: 'c-02', nombre: 'Rotación', valor: 68, descripcion: 'Velocidad esperada de movimiento del producto.' },
-  { id: 'c-03', nombre: 'Margen', valor: 82, descripcion: 'Margen proyectado sobre la venta.' },
+import type { Criterio } from '../types';
+
+export const criterios: Criterio[] = [
+  { id: 'trato', nombre: 'Cuida el trato al cliente*', obligatorio: true, checked: true },
+  { id: 'real', nombre: 'Resuelve algo real', obligatorio: false, checked: true },
+  { id: 'presupuesto', nombre: 'Cabe en el presupuesto', obligatorio: false, checked: false },
+  { id: 'operacion', nombre: 'La sucursal lo puede operar', obligatorio: false, checked: false },
+  { id: 'permisos', nombre: 'Cumple permisos y datos personales*', obligatorio: true, checked: false },
+  { id: 'g3', nombre: 'Deja algo para la G3', obligatorio: false, checked: true },
 ];
