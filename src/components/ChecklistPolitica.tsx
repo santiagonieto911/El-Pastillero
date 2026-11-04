@@ -39,7 +39,7 @@ export function ChecklistPolitica({ criterios, presupuestoOk, resultado, onToggl
       <div className={`checklist-politica__status ${resultado.pasa ? 'is-success' : 'is-error'}`} role="status">
         {resultado.mensaje}
       </div>
-      <p className="checklist-politica__nota">Los criterios con asterisco son obligatorios. Se deben cumplir al menos 5 de 6.</p>
+      <p className="checklist-politica__nota">Los criterios con asterisco son obligatorios. Se debe cumplir al menos el 80 %.</p>
     </section>
   );
 }

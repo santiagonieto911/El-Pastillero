@@ -92,15 +92,16 @@ export function evaluarPolitica(criterios: Criterio[], presupuestoOk: boolean): 
   const obligatoriosCumplidos = criteriosEvaluados
     .filter((criterio) => criterio.obligatorio)
     .every((criterio) => criterio.checked);
-  const pasa = cumplidos >= 5 && obligatoriosCumplidos;
+  const minimoCriterios = Math.ceil(criteriosEvaluados.length * 0.8);
+  const pasa = cumplidos >= minimoCriterios && obligatoriosCumplidos;
 
   let mensaje: string;
   if (pasa) {
-    mensaje = `Cumple ${cumplidos} de 6 criterios y los dos obligatorios. La prueba puede aprobarse.`;
+    mensaje = `Cumple ${cumplidos} de ${criteriosEvaluados.length} criterios y los obligatorios. La prueba puede aprobarse.`;
   } else if (!obligatoriosCumplidos) {
-    mensaje = `Cumple ${cumplidos} de 6 criterios. Faltan requisitos obligatorios.`;
+    mensaje = `Cumple ${cumplidos} de ${criteriosEvaluados.length} criterios. Faltan requisitos obligatorios.`;
   } else {
-    mensaje = `Cumple ${cumplidos} de 6 criterios. Se necesitan al menos 5.`;
+    mensaje = `Cumple ${cumplidos} de ${criteriosEvaluados.length} criterios. Se necesitan al menos ${minimoCriterios}.`;
   }
 
   return { cumplidos, obligatoriosCumplidos, pasa, mensaje };

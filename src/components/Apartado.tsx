@@ -11,6 +11,7 @@ type ApartadoProps = {
   onSeleccionarSucursal: (sucursal: string) => void;
   onCambiarCantidad: (productoId: string, delta: number) => void;
   onConfirmar: () => void;
+  error: string;
 };
 
 export function Apartado({
@@ -23,6 +24,7 @@ export function Apartado({
   onSeleccionarSucursal,
   onCambiarCantidad,
   onConfirmar,
+  error,
 }: ApartadoProps) {
   return (
     <aside className="apartado-panel">
@@ -74,6 +76,8 @@ export function Apartado({
       {hayReceta ? (
         <p className="apartado-panel__alerta">Este apartado incluye un medicamento con receta. Preséntala al recogerlo.</p>
       ) : null}
+
+      {error ? <p className="apartado-panel__alerta" role="alert">{error}</p> : null}
 
       <button type="button" className="button button--primary button--wide" onClick={onConfirmar}>
         Confirmar apartado

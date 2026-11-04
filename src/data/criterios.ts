@@ -6,5 +6,4 @@ export const criterios: Criterio[] = [
   { id: 'presupuesto', nombre: 'Cabe en el presupuesto', obligatorio: false, checked: false },
   { id: 'operacion', nombre: 'La sucursal lo puede operar', obligatorio: false, checked: false },
   { id: 'permisos', nombre: 'Cumple permisos y datos personales*', obligatorio: true, checked: false },
-  { id: 'g3', nombre: 'Deja algo para la G3', obligatorio: false, checked: true },
 ];
