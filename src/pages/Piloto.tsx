@@ -8,11 +8,11 @@ import { evaluarTope, gananciaPiezaGenerico, gananciaPiezaMarca, inversionInicia
 export function Piloto() {
   const piloto = usePiloto();
   const presupuesto = evaluarTope(piloto.inversion, piloto.tope);
-  let estado = 'Elige al menos un producto.';
+  let estado = 'Selecciona al menos un producto.';
   if (piloto.productosSeleccionados.length > 0) {
     estado = presupuesto.sePasa
-      ? `Te pasas ${formatearMoneda(presupuesto.diferencia)} del tope. Quita un producto o sube el tope.`
-      : `Sobran ${formatearMoneda(presupuesto.diferencia)} del tope.`;
+      ? `La inversión supera el tope por ${formatearMoneda(presupuesto.diferencia)}.`
+      : `Quedan ${formatearMoneda(presupuesto.diferencia)} disponibles del tope.`;
   }
 
   const productosTabla = piloto.productosOrdenados.map((producto) => ({
@@ -27,7 +27,7 @@ export function Piloto() {
       <section className="hero-block" aria-label="Prueba piloto">
         <p className="eyebrow">Panel para José</p>
         <h1>Prueba piloto de genéricos</h1>
-        <p>Elige pocos productos que se vendan mucho, revisa que la inversión quepa en el tope y que la idea pase la política de innovación antes de aprobar.</p>
+        <p>Selecciona los productos y revisa la inversión y los requisitos antes de aprobar la prueba.</p>
       </section>
 
       <div className="piloto-layout">

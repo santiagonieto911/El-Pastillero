@@ -17,7 +17,7 @@ type ChecklistPoliticaProps = {
 export function ChecklistPolitica({ criterios, presupuestoOk, resultado, onToggle }: ChecklistPoliticaProps) {
   return (
     <section className="checklist-politica">
-      <h2>Una idea pasa si…</h2>
+      <h2>Criterios de aprobación</h2>
       <ul>
         {criterios.map((criterio) => {
           const esPresupuesto = criterio.id === 'presupuesto';
@@ -30,7 +30,7 @@ export function ChecklistPolitica({ criterios, presupuestoOk, resultado, onToggl
                   disabled={esPresupuesto}
                   onChange={() => onToggle(criterio.id)}
                 />
-                <span>{criterio.nombre}{esPresupuesto ? ' (se revisa solo)' : ''}</span>
+                <span>{criterio.nombre}{esPresupuesto ? ' — cálculo automático' : ''}</span>
               </label>
             </li>
           );
@@ -39,7 +39,7 @@ export function ChecklistPolitica({ criterios, presupuestoOk, resultado, onToggl
       <div className={`checklist-politica__status ${resultado.pasa ? 'is-success' : 'is-error'}`} role="status">
         {resultado.mensaje}
       </div>
-      <p className="checklist-politica__nota">* Obligatorio. Tiene que cumplir 5 de 6.</p>
+      <p className="checklist-politica__nota">Los criterios con asterisco son obligatorios. Se deben cumplir al menos 5 de 6.</p>
     </section>
   );
 }

@@ -96,11 +96,11 @@ export function evaluarPolitica(criterios: Criterio[], presupuestoOk: boolean): 
 
   let mensaje: string;
   if (pasa) {
-    mensaje = `Pasa: cumple ${cumplidos} de 6 y los dos obligatorios. José puede aprobar la prueba.`;
+    mensaje = `Cumple ${cumplidos} de 6 criterios y los dos obligatorios. La prueba puede aprobarse.`;
   } else if (!obligatoriosCumplidos) {
-    mensaje = `Todavía no pasa: cumple ${cumplidos} de 6. Faltan los obligatorios (*).`;
+    mensaje = `Cumple ${cumplidos} de 6 criterios. Faltan requisitos obligatorios.`;
   } else {
-    mensaje = `Todavía no pasa: cumple ${cumplidos} de 6. Necesita al menos 5.`;
+    mensaje = `Cumple ${cumplidos} de 6 criterios. Se necesitan al menos 5.`;
   }
 
   return { cumplidos, obligatoriosCumplidos, pasa, mensaje };

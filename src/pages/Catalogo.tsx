@@ -28,16 +28,16 @@ export function Catalogo() {
   const confirmarApartado = () => {
     if (apartado.items.length === 0) return;
     const folio = Math.floor(1000 + Math.random() * 9000);
-    setMensaje(`Apartado listo. Folio EP-${folio}. Pasa por tu pedido a ${sucursal}.`);
+    setMensaje(`Apartado EP-${folio} confirmado. Recógelo en ${sucursal}.`);
     apartado.limpiar();
   };
 
   return (
     <main className="catalogo-page">
       <section className="hero-block" aria-label="Catálogo para clientes">
-        <p className="eyebrow">A precio por tu salud</p>
-        <h1>A precio por tu salud</h1>
-        <p>Genéricos con la marca El Pastillero, hechos por un laboratorio con registro sanitario. Pocos productos, los que más se llevan en tu comunidad.</p>
+        <p className="eyebrow">El Pastillero</p>
+        <h1>Medicamentos genéricos</h1>
+        <p>Consulta precios y aparta tus productos para recogerlos en una sucursal.</p>
       </section>
 
       <div className="catalogo-layout">
@@ -60,7 +60,7 @@ export function Catalogo() {
           </div>
 
           {productosFiltrados.length === 0 ? (
-            <p className="catalogo-vacio">No hay genéricos con ese nombre. Prueba con otra palabra o quita el filtro.</p>
+            <p className="catalogo-vacio">No encontramos productos. Cambia la búsqueda o el filtro.</p>
           ) : (
             <div className="catalogo-grid">
               {productosFiltrados.map((producto) => (

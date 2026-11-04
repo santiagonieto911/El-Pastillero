@@ -19,7 +19,7 @@ export default function App() {
       <Header activeView={activeView} />
       {activeView === 'panel' ? <Piloto /> : <Catalogo />}
       <footer className="app-footer">
-        Prototipo con datos de ejemplo. Los precios, costos y ventas son inventados para la demostración y no hay conexión con inventario real.
+        Datos de ejemplo. Los precios, costos y ventas no están conectados al inventario real.
       </footer>
     </div>
   );

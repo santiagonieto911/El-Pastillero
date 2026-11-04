@@ -47,7 +47,7 @@ export function ResumenPiloto({
         </div>
       </div>
       <p className="resumen-piloto__nota">
-        Supone que {tasaCambio}% de los clientes de la marca cambia al genérico.
+        Estimación basada en que {tasaCambio}% de los clientes cambie al genérico.
       </p>
     </section>
   );

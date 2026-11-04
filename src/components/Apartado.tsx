@@ -30,7 +30,7 @@ export function Apartado({
 
       {items.length === 0 ? (
         <p className="apartado-panel__empty">
-          Aún no apartas nada. Elige un genérico y se guarda aquí para que lo recojas en tu sucursal.
+          No has agregado productos. Aquí verás los que apartes.
         </p>
       ) : (
         <>
@@ -58,7 +58,7 @@ export function Apartado({
             <span>Total</span>
             <strong>{formatearMoneda(total)}</strong>
           </div>
-          <p className="apartado-panel__ahorro">Ahorras {formatearMoneda(ahorro)} frente a la marca.</p>
+          <p className="apartado-panel__ahorro">Ahorras {formatearMoneda(ahorro)} frente al precio de marca.</p>
         </>
       )}
 
@@ -72,7 +72,7 @@ export function Apartado({
       </label>
 
       {hayReceta ? (
-        <p className="apartado-panel__alerta">Incluye medicamento con receta. Lleva tu receta al recogerlo.</p>
+        <p className="apartado-panel__alerta">Este apartado incluye un medicamento con receta. Preséntala al recogerlo.</p>
       ) : null}
 
       <button type="button" className="button button--primary button--wide" onClick={onConfirmar}>

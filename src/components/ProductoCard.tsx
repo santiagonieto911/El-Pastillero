@@ -48,7 +48,7 @@ export function ProductoCard({
 
       <div className="producto-card__meta">
         <span className="producto-card__ahorro">
-          Ahorras {formatearMoneda(ahorro)} ({porcentajeAhorro}%)
+          Ahorras {formatearMoneda(ahorro)} por caja · {porcentajeAhorro}%
         </span>
         <div className="producto-card__actions">
           <button type="button" className="button button--secondary" onClick={() => onVerDetalle(producto)}>

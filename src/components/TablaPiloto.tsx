@@ -22,10 +22,10 @@ export function TablaPiloto({ productos, seleccionados, onToggle }: TablaPilotoP
           <tr>
             <th>Incluir</th>
             <th>Producto</th>
-            <th>Ventas al mes (piezas)</th>
+            <th>Ventas al mes, piezas</th>
             <th>Ganancia por pieza hoy</th>
             <th>Ganancia por pieza genérico</th>
-            <th>Mínimo al laboratorio (piezas)</th>
+            <th>Mínimo del laboratorio, piezas</th>
             <th>Inversión inicial</th>
           </tr>
         </thead>
@@ -41,7 +41,7 @@ export function TablaPiloto({ productos, seleccionados, onToggle }: TablaPilotoP
                 />
               </td>
               <td>
-                <strong>{producto.nombre}{producto.receta ? ' (receta)' : ''}</strong>
+                <strong>{producto.nombre}{producto.receta ? ' — requiere receta' : ''}</strong>
                 <small className="tabla-piloto__presentacion">{producto.presentacion}</small>
               </td>
               <td>{producto.ventasMes}</td>

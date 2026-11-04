@@ -32,10 +32,10 @@ export function ProductoDetalle({ producto, ahorro, ahorroAnual, onClose, onApar
         <p><strong>Para qué se usa:</strong> {producto.uso}</p>
         <p><strong>Receta:</strong> {producto.receta ? 'Se necesita receta.' : 'No se necesita receta.'}</p>
         <p><strong>Ahorro por caja:</strong> {formatearMoneda(ahorro)}</p>
-        <p><strong>Ahorras {formatearMoneda(ahorroAnual)} al año</strong> si lo usas cada mes.</p>
-        <p><strong>Registro sanitario:</strong> Se confirma con el laboratorio antes de la venta.</p>
+        <p><strong>Ahorro anual estimado:</strong> {formatearMoneda(ahorroAnual)} si compras una caja al mes.</p>
+        <p>El registro sanitario se confirmará con el laboratorio antes de la venta.</p>
         <p className="detalle-dialog__nota">
-          Un genérico intercambiable lleva la misma sustancia activa que la marca. Si ya sigues un tratamiento, consulta a tu médico o farmacéutico antes de cambiar.
+          Consulta a tu médico o farmacéutico antes de cambiar tu tratamiento.
         </p>
         <div className="detalle-dialog__acciones">
           <button type="button" className="button button--secondary" onClick={onClose}>Cerrar</button>

@@ -17,7 +17,7 @@ export function Header({ activeView }: HeaderProps) {
           Catálogo para clientes
         </a>
         <a href="#panel" aria-current={activeView === 'panel' ? 'page' : undefined}>
-          Prueba piloto (José)
+          Panel de José
         </a>
       </nav>
     </header>
