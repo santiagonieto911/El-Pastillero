@@ -1,0 +1,108 @@
+import type { Criterio, ItemApartado, Producto } from '../types';
+
+export function ahorroPorCaja(producto: Producto): number {
+  return producto.precioMarca - producto.precioGenerico;
+}
+
+export function porcentajeAhorro(producto: Producto): number {
+  return Math.round((ahorroPorCaja(producto) / producto.precioMarca) * 100);
+}
+
+export function proporcionPrecioGenerico(producto: Producto): number {
+  return (producto.precioGenerico / producto.precioMarca) * 100;
+}
+
+export function ahorroAnual(producto: Producto): number {
+  return ahorroPorCaja(producto) * 12;
+}
+
+export function totalGenerico(items: ItemApartado[]): number {
+  return items.reduce((total, item) => total + item.producto.precioGenerico * item.cantidad, 0);
+}
+
+export function totalMarca(items: ItemApartado[]): number {
+  return items.reduce((total, item) => total + item.producto.precioMarca * item.cantidad, 0);
+}
+
+export function ahorroApartado(items: ItemApartado[]): number {
+  return totalMarca(items) - totalGenerico(items);
+}
+
+export function gananciaPiezaMarca(producto: Producto): number {
+  return producto.precioMarca - producto.costoMarca;
+}
+
+export function gananciaPiezaGenerico(producto: Producto): number {
+  return producto.precioGenerico - producto.costoGenerico;
+}
+
+export function inversionInicialProducto(producto: Producto): number {
+  return producto.minimoLab * producto.costoGenerico;
+}
+
+export function totalInversion(productos: Producto[]): number {
+  return productos.reduce((total, producto) => total + inversionInicialProducto(producto), 0);
+}
+
+export function gananciaExtraMes(productos: Producto[], tasaCambio: number): number {
+  return productos.reduce(
+    (total, producto) =>
+      total +
+      producto.ventasMes *
+        (tasaCambio / 100) *
+        (gananciaPiezaGenerico(producto) - gananciaPiezaMarca(producto)),
+    0,
+  );
+}
+
+export function gananciaExtraSemanas(
+  productos: Producto[],
+  semanas: number,
+  tasaCambio: number,
+): number {
+  return (gananciaExtraMes(productos, tasaCambio) * semanas) / 4.3;
+}
+
+export function cabeEnPresupuesto(productos: Producto[], tope: number): boolean {
+  return productos.length > 0 && totalInversion(productos) <= tope;
+}
+
+export function evaluarTope(inversion: number, tope: number): {
+  sePasa: boolean;
+  diferencia: number;
+  progreso: number;
+} {
+  return {
+    sePasa: inversion > tope,
+    diferencia: Math.abs(tope - inversion),
+    progreso: tope > 0 ? Math.min((inversion / tope) * 100, 100) : (inversion > 0 ? 100 : 0),
+  };
+}
+
+export function evaluarPolitica(criterios: Criterio[], presupuestoOk: boolean): {
+  cumplidos: number;
+  obligatoriosCumplidos: boolean;
+  pasa: boolean;
+  mensaje: string;
+} {
+  const criteriosEvaluados = criterios.map((criterio) =>
+    criterio.id === 'presupuesto' ? { ...criterio, checked: presupuestoOk } : criterio,
+  );
+  const cumplidos = criteriosEvaluados.filter((criterio) => criterio.checked).length;
+  const obligatoriosCumplidos = criteriosEvaluados
+    .filter((criterio) => criterio.obligatorio)
+    .every((criterio) => criterio.checked);
+  const minimoCriterios = Math.ceil(criteriosEvaluados.length * 0.8);
+  const pasa = cumplidos >= minimoCriterios && obligatoriosCumplidos;
+
+  let mensaje: string;
+  if (pasa) {
+    mensaje = `Cumple ${cumplidos} de ${criteriosEvaluados.length} criterios y los obligatorios. La prueba puede aprobarse.`;
+  } else if (!obligatoriosCumplidos) {
+    mensaje = `Cumple ${cumplidos} de ${criteriosEvaluados.length} criterios. Faltan requisitos obligatorios.`;
+  } else {
+    mensaje = `Cumple ${cumplidos} de ${criteriosEvaluados.length} criterios. Se necesitan al menos ${minimoCriterios}.`;
+  }
+
+  return { cumplidos, obligatoriosCumplidos, pasa, mensaje };
+}
